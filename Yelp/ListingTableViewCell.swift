@@ -20,9 +20,26 @@ class ListingTableViewCell: UITableViewCell {
 //    @IBOutlet weak var distanceLabel: UILabel!
 //    @IBOutlet weak var priceLabel: UILabel!
 
+    func populate (business: Business) {
+        titleLabel.text = business.name
+
+        snapshotImage.alpha = 0.0
+        snapshotImage.setImageWithURL(business.snapshotImageUrl)
+        UIView.animateWithDuration(0.2, animations: {
+            self.snapshotImage.alpha = 1.0
+        })
+
+        starsImage.setImageWithURL(business.starsImageUrl)
+        numberReviewsLabel.text = "\(business.numberReviews) reviews"
+        addressLabel.text = business.address
+        categoriesLabel.text = ", ".join(business.categories)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        snapshotImage.layer.cornerRadius = 5
+        snapshotImage.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
