@@ -14,8 +14,8 @@ class ListingViewController: UIViewController {
     // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
     let yelpConsumerKey = "u5lK2lrWU7IAR3QIEu04KQ"
     let yelpConsumerSecret = "KwldfReN7JTQTjiufFOx9qXuRX4"
-    let yelpToken = "RmkNSbo01LemyGxLyBOMr5EtWrvzvovY"
-    let yelpTokenSecret = "A2TYX-qjMQp9DVqhr5Mgg2nko-k"
+    let yelpToken = "vsprJ9N-TfpqiJtYlYOG3EZFaWuaIrhC"
+    let yelpTokenSecret = "2c-lwD9vE38DRiQYyRsqHWaSZC0"
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,6 +23,7 @@ class ListingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         client = YelpClient(
             consumerKey: yelpConsumerKey,

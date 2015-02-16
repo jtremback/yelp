@@ -15,10 +15,10 @@ class ListingTableViewCell: UITableViewCell {
     @IBOutlet weak var starsImage: UIImageView!
     @IBOutlet weak var numberReviewsLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var categoriesLabel: UILabel!
 
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
+//    @IBOutlet weak var distanceLabel: UILabel!
+//    @IBOutlet weak var priceLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
