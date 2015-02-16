@@ -109,10 +109,10 @@ UISearchBarDelegate {
         self.performSegueWithIdentifier("filterSegue", sender: tableView)
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "filterSegue") {
-            var filtersViewController = segue.destinationViewController as FiltersViewController
-            filtersViewController.delegate = self
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+//        if (segue.identifier == "filterSegue") {
+//            var filtersViewController = segue.destinationViewController as FiltersViewController
+//            filtersViewController.delegate = self
+//        }
+//    }
 }
