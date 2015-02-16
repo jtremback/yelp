@@ -19,6 +19,10 @@
 		4598DFFB1A91654B00968694 /* ListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4598DFFA1A91654B00968694 /* ListingTableViewCell.swift */; };
 		4598DFFD1A91656200968694 /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4598DFFC1A91656200968694 /* ListingViewController.swift */; };
 		4598DFFF1A91657100968694 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4598DFFE1A91657100968694 /* FiltersViewController.swift */; };
+		45DFFDA11A91D972007B4DEB /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DFFDA01A91D972007B4DEB /* Filters.swift */; };
+		45DFFDA31A91EFDA007B4DEB /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DFFDA21A91EFDA007B4DEB /* SwitchTableViewCell.swift */; };
+		45DFFDA51A91F02D007B4DEB /* DropdownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DFFDA41A91F02D007B4DEB /* DropdownTableViewCell.swift */; };
+		45DFFDA71A91F047007B4DEB /* CheckmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DFFDA61A91F047007B4DEB /* CheckmarkTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		4598DFFA1A91654B00968694 /* ListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingTableViewCell.swift; sourceTree = "<group>"; };
 		4598DFFC1A91656200968694 /* ListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingViewController.swift; sourceTree = "<group>"; };
 		4598DFFE1A91657100968694 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		45DFFDA01A91D972007B4DEB /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		45DFFDA21A91EFDA007B4DEB /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		45DFFDA41A91F02D007B4DEB /* DropdownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownTableViewCell.swift; sourceTree = "<group>"; };
+		45DFFDA61A91F047007B4DEB /* CheckmarkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkTableViewCell.swift; sourceTree = "<group>"; };
 		98730C8A6BD8C83E7AB5BBC8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E17D9B82E09E3B61BCBB79B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +156,9 @@
 				4598DFF81A91651600968694 /* FiltersTableViewCell.swift */,
 				4598DFFC1A91656200968694 /* ListingViewController.swift */,
 				4598DFFA1A91654B00968694 /* ListingTableViewCell.swift */,
+				45DFFDA21A91EFDA007B4DEB /* SwitchTableViewCell.swift */,
+				45DFFDA41A91F02D007B4DEB /* DropdownTableViewCell.swift */,
+				45DFFDA61A91F047007B4DEB /* CheckmarkTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -156,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				4551C0961A91A1F500C19C20 /* Business.swift */,
+				45DFFDA01A91D972007B4DEB /* Filters.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -329,11 +341,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4598DFFB1A91654B00968694 /* ListingTableViewCell.swift in Sources */,
+				45DFFDA11A91D972007B4DEB /* Filters.swift in Sources */,
 				4551C0971A91A1F500C19C20 /* Business.swift in Sources */,
 				4598DFF91A91651600968694 /* FiltersTableViewCell.swift in Sources */,
 				4598DFFF1A91657100968694 /* FiltersViewController.swift in Sources */,
+				45DFFDA31A91EFDA007B4DEB /* SwitchTableViewCell.swift in Sources */,
 				4598DFFD1A91656200968694 /* ListingViewController.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,
+				45DFFDA71A91F047007B4DEB /* CheckmarkTableViewCell.swift in Sources */,
+				45DFFDA51A91F02D007B4DEB /* DropdownTableViewCell.swift in Sources */,
 				222D8A5B19CCF9F900D2DB53 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

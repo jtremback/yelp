@@ -12,12 +12,15 @@ import SwiftyJSON
 class ListingViewController:
 UIViewController,
 UITableViewDataSource,
-UITableViewDelegate {
+UITableViewDelegate,
+UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
 
     var json: JSON!
     var businesses: JSON!
     var client: YelpClient!
+
+    var searchBar: UISearchBar!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -30,7 +33,28 @@ UITableViewDelegate {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
 
-        search("Thai")
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 260, height: 20))
+        searchBar.placeholder = "Search"
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+
+        let filterButton = UIBarButtonItem(
+            title: "Filter",
+            style: UIBarButtonItemStyle.Bordered,
+            target: self,
+            action: "goToFilter"
+        )
+
+        filterButton.setTitleTextAttributes(
+            [NSForegroundColorAttributeName: UIColor.whiteColor()],
+            forState: UIControlState.Normal
+        )
+
+        navigationItem.leftBarButtonItem = filterButton
+
+        search("Italian")
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,5 +103,16 @@ UITableViewDelegate {
                 println(error)
             }
         )
+    }
+
+    func goToFilter() {
+        self.performSegueWithIdentifier("filterSegue", sender: tableView)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "filterSegue") {
+            var filtersViewController = segue.destinationViewController as FiltersViewController
+            filtersViewController.delegate = self
+        }
     }
 }
