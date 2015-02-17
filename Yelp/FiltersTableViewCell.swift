@@ -37,9 +37,7 @@ enum FiltersTableViewCellType {
 
 class FiltersTableViewCell: UITableViewCell {
     var filter: Filter!
-    @IBOutlet weak var switchCellTitleLabel: UILabel!
-    @IBOutlet weak var dropdownCellTitleLabel: UILabel!
-    @IBOutlet weak var checkmarkCellTitleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -47,68 +47,30 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
 
+    func getFilterListForIndex (index: Int) -> FilterList {
+        switch index {
+            case 0:
+                return self.mostPopular
+            case 1:
+                return self.sortBy
+            case 2:
+                return self.distance
+            default:
+                return self.categories
+        }
+    }
+
     func tableView(
         tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath
     ) -> UITableViewCell {
-        let sectionTitle = sections[indexPath.section]
-        var dropdownTableViewcell: DropdownTableViewCell!
-        var checkmarkTableViewcell: CheckmarkTableViewCell!
-
-        if sectionTitle == "Most Popular" {
-            cell = tableView.dequeueReusableCellWithIdentifier(
-                "SwitchTableViewCell"
-            ) as SwitchTableViewCell
-
-            cell.filter = self.mostPopular.filters[indexPath.row]
-            cell.titleLabel.text = cell.filter.title
-        }
-
-        else if sectionTitle == "Sort By" {
-            if (self.sectionExpanded == indexPath.section) {
-                cell = tableView.dequeueReusableCellWithIdentifier(
-                    "CheckmarkTableViewCell"
-                ) as CheckmarkTableViewCell
-
-                cell.filter = self.sortBy.filters[indexPath.row]
-                cell.titleLabel.text = cell.filter.title
-            } else {
-                cell = tableView.dequeueReusableCellWithIdentifier(
-                    "DropdownTableViewCell"
-                ) as DropdownTableViewCell
-
-                cell.filter = self.sortBy.filters[indexPath.row]
-                cell.titleLabel.text = cell.filter.title
-            }
-        }
-
-        else if sectionTitle == "Distance" {
-            if (self.sectionExpanded == indexPath.section) {
-                cell = tableView.dequeueReusableCellWithIdentifier(
-                    "CheckmarkTableViewCell"
-                ) as CheckmarkTableViewCell
-
-                cell.filter = self.distance.filters[indexPath.row]
-                cell.titleLabel.text = cell.filter.title
-            } else {
-                cell = tableView.dequeueReusableCellWithIdentifier(
-                    "DropdownTableViewCell"
-                ) as DropdownTableViewCell
-
-                cell.filter = self.distance.filters[indexPath.row]
-                cell.titleLabel.text = cell.filter.title
-            }
-        }
-
-        else {
-            cell = tableView.dequeueReusableCellWithIdentifier(
-                "CheckmarkTableViewCell"
-            ) as CheckmarkTableViewCell
-
-            cell.filter = self.categories.filters[indexPath.row]
-            cell.titleLabel.text = cell.filter.title
-        }
-
+        let cell = tableView.dequeueReusableCellWithIdentifier(
+            "FiltersTableViewCell"
+        ) as FiltersTableViewCell
+        
+        cell.filter = getFilterListForIndex(indexPath.section).filters[indexPath.row]
+        cell.titleLabel.text = cell.filter.title
+        
         return cell
     }
 
@@ -116,11 +78,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        if (self.sectionExpanded == section) {
-            return self.sections.count
-        } else {
-            return 1
-        }
+        return getFilterListForIndex(section).filters.count
     }
 
 

@@ -188,7 +188,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchTableViewCell" id="Lkj-Nh-Ye3" userLabel="Switch Cell" customClass="FiltersTableViewCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FiltersTableViewCell" id="Lkj-Nh-Ye3" userLabel="Filter Cell" customClass="FiltersTableViewCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lkj-Nh-Ye3" id="y1L-IT-TQK">
@@ -196,9 +196,6 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tdj-hG-ziY">
                                                     <rect key="frame" x="543" y="6" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="switchAction:" destination="Lkj-Nh-Ye3" eventType="valueChanged" id="DoA-X0-E61"/>
-                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SL1-Dj-ITp">
                                                     <rect key="frame" x="8" y="12" width="535" height="21"/>
@@ -217,54 +214,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <outlet property="switchCellTitleLabel" destination="SL1-Dj-ITp" id="4bF-Fa-rAI"/>
-                                            <outlet property="switchOutlet" destination="tdj-hG-ziY" id="gIa-88-p3c"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DropdownTableViewCell" id="AlA-fE-xgq" userLabel="Dropdown Cell" customClass="FiltersTableViewCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AlA-fE-xgq" id="rUR-mb-AA4">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOn-5n-T1D">
-                                                    <rect key="frame" x="8" y="12" width="551" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="GOn-5n-T1D" firstAttribute="leading" secondItem="rUR-mb-AA4" secondAttribute="leadingMargin" id="EDY-Al-VYy"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="GOn-5n-T1D" secondAttribute="trailing" id="YDI-5t-hoq"/>
-                                                <constraint firstAttribute="centerY" secondItem="GOn-5n-T1D" secondAttribute="centerY" id="eYl-CV-Jzv"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="dropdownCellTitleLabel" destination="GOn-5n-T1D" id="LLo-vp-dQQ"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="FilterTableViewCell" id="31N-pz-dKD" userLabel="Checkmark Cell" customClass="FiltersTableViewCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="31N-pz-dKD" id="Xb1-xx-E7u">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5V-fP-9kE">
-                                                    <rect key="frame" x="8" y="12" width="545" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="v5V-fP-9kE" secondAttribute="centerY" id="Amd-nz-X7w"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="v5V-fP-9kE" secondAttribute="trailing" id="Bte-rn-gfj"/>
-                                                <constraint firstItem="v5V-fP-9kE" firstAttribute="leading" secondItem="Xb1-xx-E7u" secondAttribute="leadingMargin" id="HwA-Wp-uko"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="checkmarkCellTitleLabel" destination="v5V-fP-9kE" id="h3n-Yy-SnP"/>
+                                            <outlet property="titleLabel" destination="SL1-Dj-ITp" id="bzw-ZQ-cze"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -273,7 +223,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="filtersTableView" destination="27B-tW-LFJ" id="qDl-yn-p9h"/>
                         <outlet property="tableView" destination="27B-tW-LFJ" id="01z-ca-BWb"/>
                     </connections>
                 </viewController>
