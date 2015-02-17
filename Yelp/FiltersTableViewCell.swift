@@ -8,7 +8,38 @@
 
 import UIKit
 
+enum FiltersTableViewCellType {
+    case Switch, Dropdown, Checkmark
+}
+
+//class FiltersTableViewCell: UITableViewCell {
+//    var filter: Filter!
+//    
+//    @IBOutlet weak var titleLabel: UILabel!
+//    @IBOutlet weak var switchOutlet: UISwitch!
+//    @IBAction func switchAction(sender: AnyObject) {
+//        
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        // Initialization code
+//    }
+//
+//    override func setSelected(selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
+//        
+//    func populate () {
+//        
+//    }
+//}
+
 class FiltersTableViewCell: UITableViewCell {
+    var filter: Filter!
+    @IBOutlet weak var switchCellTitleLabel: UILabel!
+    @IBOutlet weak var dropdownCellTitleLabel: UILabel!
+    @IBOutlet weak var checkmarkCellTitleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,5 +51,39 @@ class FiltersTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
+
+//class DropdownTableViewCell: UITableViewCell {
+//    var filter: Filter!
+//
+//    @IBOutlet weak var titleLabel: UILabel!
+//
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        // Initialization code
+//    }
+//
+//    override func setSelected(selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
+//}
+//
+//class CheckmarkTableViewCell: UITableViewCell {
+//    var filter: Filter!
+//
+//    @IBOutlet weak var titleLabel: UILabel!
+//
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        // Initialization code
+//    }
+//
+//    override func setSelected(selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
+//}
+

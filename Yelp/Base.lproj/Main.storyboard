@@ -188,7 +188,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchTableViewCell" id="Lkj-Nh-Ye3" userLabel="Switch Cell" customClass="SwitchTableViewCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchTableViewCell" id="Lkj-Nh-Ye3" userLabel="Switch Cell" customClass="FiltersTableViewCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lkj-Nh-Ye3" id="y1L-IT-TQK">
@@ -217,32 +217,11 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="switchCellTitleLabel" destination="SL1-Dj-ITp" id="4bF-Fa-rAI"/>
                                             <outlet property="switchOutlet" destination="tdj-hG-ziY" id="gIa-88-p3c"/>
-                                            <outlet property="titleLabel" destination="SL1-Dj-ITp" id="G3a-zR-DsU"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5uc-M5-Xxu" userLabel="Segment Cell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5uc-M5-Xxu" id="BVu-m9-7Jc">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8bB-18-hS7">
-                                                    <rect key="frame" x="8" y="7" width="584" height="29"/>
-                                                    <segments>
-                                                        <segment title="First"/>
-                                                        <segment title="Second"/>
-                                                    </segments>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="8bB-18-hS7" secondAttribute="trailing" id="4KD-ee-h5n"/>
-                                                <constraint firstAttribute="centerY" secondItem="8bB-18-hS7" secondAttribute="centerY" constant="0.75" id="9qv-X1-1fl"/>
-                                                <constraint firstItem="8bB-18-hS7" firstAttribute="leading" secondItem="BVu-m9-7Jc" secondAttribute="leadingMargin" id="KuU-w2-dlJ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DropdownTableViewCell" id="AlA-fE-xgq" userLabel="Dropdown Cell" customClass="DropdownTableViewCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DropdownTableViewCell" id="AlA-fE-xgq" userLabel="Dropdown Cell" customClass="FiltersTableViewCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AlA-fE-xgq" id="rUR-mb-AA4">
@@ -262,10 +241,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="titleLabel" destination="GOn-5n-T1D" id="L0R-CO-iz5"/>
+                                            <outlet property="dropdownCellTitleLabel" destination="GOn-5n-T1D" id="LLo-vp-dQQ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="CheckmarkTableViewCell" id="31N-pz-dKD" userLabel="Checkmark Cell" customClass="CheckmarkTableViewCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="FilterTableViewCell" id="31N-pz-dKD" userLabel="Checkmark Cell" customClass="FiltersTableViewCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="31N-pz-dKD" id="Xb1-xx-E7u">
@@ -285,36 +264,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="titleLabel" destination="v5V-fP-9kE" id="KEd-Ea-96k"/>
+                                            <outlet property="checkmarkCellTitleLabel" destination="v5V-fP-9kE" id="h3n-Yy-SnP"/>
                                         </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pmo-pE-ZUY" userLabel="See All Cell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pmo-pE-ZUY" id="k9k-rf-i5Y">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See All" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7a-ke-rHL">
-                                                    <rect key="frame" x="8" y="12" width="584" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="y7a-ke-rHL" secondAttribute="bottom" id="Hsa-jp-WYu"/>
-                                                <constraint firstItem="y7a-ke-rHL" firstAttribute="leading" secondItem="k9k-rf-i5Y" secondAttribute="leadingMargin" id="hLb-qa-qDK"/>
-                                                <constraint firstItem="y7a-ke-rHL" firstAttribute="top" secondItem="k9k-rf-i5Y" secondAttribute="topMargin" id="oyh-mS-sst"/>
-                                                <constraint firstAttribute="centerY" secondItem="y7a-ke-rHL" secondAttribute="centerY" id="qNG-4L-6Vp"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="y7a-ke-rHL" secondAttribute="trailing" id="tm4-SL-v29"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="Hsa-jp-WYu"/>
-                                                    <exclude reference="oyh-mS-sst"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -323,6 +274,7 @@
                     </view>
                     <connections>
                         <outlet property="filtersTableView" destination="27B-tW-LFJ" id="qDl-yn-p9h"/>
+                        <outlet property="tableView" destination="27B-tW-LFJ" id="01z-ca-BWb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrX-hC-LJf" userLabel="First Responder" sceneMemberID="firstResponder"/>

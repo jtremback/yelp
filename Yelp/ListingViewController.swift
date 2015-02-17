@@ -9,11 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class ListingViewController:
-UIViewController,
-UITableViewDataSource,
-UITableViewDelegate,
-UISearchBarDelegate {
+class ListingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
 
     var json: JSON!

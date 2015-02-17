@@ -8,11 +8,8 @@
 
 import UIKit
 
-class FiltersViewController:
-UIViewController,
-UITableViewDataSource,
-UITableViewDelegate {
-    @IBOutlet weak var filtersTableView: UITableView!
+class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
 
     let sections = [
         "Most Popular",
@@ -22,14 +19,27 @@ UITableViewDelegate {
     ]
 
     var sectionExpanded: Int?
-    var filters = Filters()
+    let filters = Filters()
+
+    var categories: FilterList
+    var sortBy: FilterList
+    var mostPopular: FilterList
+    var distance: FilterList
+
+
+    required init(coder aDecoder: NSCoder) {
+        self.categories = FilterList(filters: filters.categories, selected: filters.selected.categories)
+        self.sortBy = FilterList(filters: filters.sortBy, selected: filters.selected.sortBy)
+        self.mostPopular = FilterList(filters: filters.mostPopular, selected: filters.selected.mostPopular)
+        self.distance = FilterList(filters: filters.distance, selected: filters.selected.distance)
+
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        filtersTableView.delegate = self
-        filtersTableView.dataSource = self
-
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,67 +47,69 @@ UITableViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-//    func createTableViewCell (type: String, title: String) {
-//        switch type {
-//            case "SwitchTableViewCell":
-//
-//        }
-//    }
-
     func tableView(
         tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath
     ) -> UITableViewCell {
         let sectionTitle = sections[indexPath.section]
+        var dropdownTableViewcell: DropdownTableViewCell!
+        var checkmarkTableViewcell: CheckmarkTableViewCell!
 
-        switch sectionTitle {
-            case "Most Popular":
-                let title = filters.mostPopular[indexPath.row]
-                let cell = tableView.dequeueReusableCellWithIdentifier(
-                    "SwitchTableViewCell"
-                ) as SwitchTableViewCell
+        if sectionTitle == "Most Popular" {
+            cell = tableView.dequeueReusableCellWithIdentifier(
+                "SwitchTableViewCell"
+            ) as SwitchTableViewCell
 
-                cell.titleLabel.text = title
-                cell.switchOutlet.fuckYou = filters.selected[]
-                
-            case "Sort By":
-                let title = filters.sortBy[indexPath.row]
-                if (self.sectionExpanded == indexPath.section) {
-                    let cell = tableView.dequeueReusableCellWithIdentifier(
-                        "CheckmarkTableViewCell"
-                    ) as CheckmarkTableViewCell
+            cell.filter = self.mostPopular.filters[indexPath.row]
+            cell.titleLabel.text = cell.filter.title
+        }
 
-                    cell.titleLabel.text = title
-                } else {
-                    let cell = tableView.dequeueReusableCellWithIdentifier(
-                        "DropdownTableViewCell"
-                    ) as DropdownTableViewCell
-
-                    cell.titleLabel.text = title
-                }
-
-            case "Distance":
-                let title = filters.distance[indexPath.row]
-                if (self.sectionExpanded == indexPath.section) {
-                    let cell = tableView.dequeueReusableCellWithIdentifier(
-                        "CheckmarkTableViewCell"
-                    ) as CheckmarkTableViewCell
-
-                    cell.titleLabel.text = title
-                } else {
-                    let cell = tableView.dequeueReusableCellWithIdentifier(
-                        "DropdownTableViewCell"
-                    ) as DropdownTableViewCell
-
-                    cell.titleLabel.text = title
-                }
-
-            case "Categories":
-                let title = filters.categories[indexPath.row]
-                let cell = tableView.dequeueReusableCellWithIdentifier(
+        else if sectionTitle == "Sort By" {
+            if (self.sectionExpanded == indexPath.section) {
+                cell = tableView.dequeueReusableCellWithIdentifier(
                     "CheckmarkTableViewCell"
                 ) as CheckmarkTableViewCell
+
+                cell.filter = self.sortBy.filters[indexPath.row]
+                cell.titleLabel.text = cell.filter.title
+            } else {
+                cell = tableView.dequeueReusableCellWithIdentifier(
+                    "DropdownTableViewCell"
+                ) as DropdownTableViewCell
+
+                cell.filter = self.sortBy.filters[indexPath.row]
+                cell.titleLabel.text = cell.filter.title
+            }
         }
+
+        else if sectionTitle == "Distance" {
+            if (self.sectionExpanded == indexPath.section) {
+                cell = tableView.dequeueReusableCellWithIdentifier(
+                    "CheckmarkTableViewCell"
+                ) as CheckmarkTableViewCell
+
+                cell.filter = self.distance.filters[indexPath.row]
+                cell.titleLabel.text = cell.filter.title
+            } else {
+                cell = tableView.dequeueReusableCellWithIdentifier(
+                    "DropdownTableViewCell"
+                ) as DropdownTableViewCell
+
+                cell.filter = self.distance.filters[indexPath.row]
+                cell.titleLabel.text = cell.filter.title
+            }
+        }
+
+        else {
+            cell = tableView.dequeueReusableCellWithIdentifier(
+                "CheckmarkTableViewCell"
+            ) as CheckmarkTableViewCell
+
+            cell.filter = self.categories.filters[indexPath.row]
+            cell.titleLabel.text = cell.filter.title
+        }
+
+        return cell
     }
 
     func tableView(
@@ -105,8 +117,10 @@ UITableViewDelegate {
         numberOfRowsInSection section: Int
     ) -> Int {
         if (self.sectionExpanded == section) {
-            return filters.lists[sections[section]].count
-        } else { return 1 }
+            return self.sections.count
+        } else {
+            return 1
+        }
     }
 
 
