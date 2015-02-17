@@ -38,6 +38,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="184" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8JV-Uy-Ag5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListingTableViewCell" id="JfE-Lj-TTv" userLabel="Listing Table View Cell" customClass="ListingTableViewCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -142,9 +143,13 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="HC1-pA-sZH" appends="YES" id="GpC-L8-5qF"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="8JV-Uy-Ag5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Avu-9m-7GI"/>
                             <constraint firstAttribute="centerX" secondItem="8JV-Uy-Ag5" secondAttribute="centerX" id="aia-0x-385"/>
@@ -161,6 +166,9 @@
                                 <exclude reference="wRJ-b5-UPc"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HC1-pA-sZH" appends="YES" id="fmA-oe-QaO"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="N34-31-UgO"/>
                     <connections>
@@ -169,6 +177,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="HC1-pA-sZH">
+                    <connections>
+                        <action selector="onTap:" destination="vXZ-lx-hvc" id="Fx4-0s-Eyv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="256" y="-39"/>
         </scene>
@@ -184,7 +197,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="27B-tW-LFJ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="27B-tW-LFJ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -196,9 +209,12 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tdj-hG-ziY">
                                                     <rect key="frame" x="543" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchAction:" destination="Lkj-Nh-Ye3" eventType="valueChanged" id="fKf-l2-vDi"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SL1-Dj-ITp">
-                                                    <rect key="frame" x="8" y="12" width="535" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="535" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -214,6 +230,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="switchOutlet" destination="tdj-hG-ziY" id="9ZK-as-vk1"/>
                                             <outlet property="titleLabel" destination="SL1-Dj-ITp" id="bzw-ZQ-cze"/>
                                         </connections>
                                     </tableViewCell>
@@ -221,6 +238,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8vj-1U-eHt" firstAttribute="top" secondItem="27B-tW-LFJ" secondAttribute="bottom" id="8ha-yB-Sm9"/>
+                            <constraint firstAttribute="centerX" secondItem="27B-tW-LFJ" secondAttribute="centerX" id="M1R-SN-fDR"/>
+                            <constraint firstItem="27B-tW-LFJ" firstAttribute="top" secondItem="iaa-hP-tes" secondAttribute="bottom" constant="-64" id="PBR-se-9Tk"/>
+                            <constraint firstItem="27B-tW-LFJ" firstAttribute="width" secondItem="5ZM-c8-Fug" secondAttribute="width" id="eoK-fa-4zw"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="27B-tW-LFJ" id="01z-ca-BWb"/>

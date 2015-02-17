@@ -13,20 +13,13 @@ struct Filters {
     let categories = [
         "newamerican": "American (New)",
         "tradamerican": "American (Traditional)",
-        "asianfusion": "Asian Fusion",
         "bbq": "BBQ",
         "brazilian": "Brazilian",
-        "breakfast_brunch": "Breakfast & Brunch",
         "burmese": "Burmese",
-        "cafes": "Cafes",
-        "caribbean": "Caribbean",
         "chinese": "Chinese",
         "cuban": "Cuban",
         "delis": "Delis",
-        "ethiopian": "Ethiopian",
-        "hotdogs": "Fast Food",
         "french": "French",
-        "gastropubs": "Gastropubs",
         "german": "German",
         "indian": "Indian",
         "japanese": "Japanese",
@@ -40,7 +33,6 @@ struct Filters {
         "spanish": "Spanish",
         "steak": "Steakhouses",
         "sushi": "Sushi",
-        "taiwanese": "Taiwanese",
         "thai": "Thai",
         "vegetarian": "Vegetarian",
         "vietnamese": "Vietnamese"
@@ -74,13 +66,18 @@ struct Filters {
 
 class FilterList {
     var filters: [Filter] = []
+    var title: String
     
-    init (filters: [String: String], selected: [String]) {
+    init (filters: [String: String], title: String, selected: [String]) {
+        self.title = title
+        
         for (key, title) in filters {
             var filter = Filter(key: key, title: title)
             for select in selected {
                 if select == key {
                     filter.selected = true
+                } else {
+                    filter.selected = false
                 }
             }
 

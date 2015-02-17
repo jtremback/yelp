@@ -12,32 +12,20 @@ enum FiltersTableViewCellType {
     case Switch, Dropdown, Checkmark
 }
 
-//class FiltersTableViewCell: UITableViewCell {
-//    var filter: Filter!
-//    
-//    @IBOutlet weak var titleLabel: UILabel!
-//    @IBOutlet weak var switchOutlet: UISwitch!
-//    @IBAction func switchAction(sender: AnyObject) {
-//        
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-//        
-//    func populate () {
-//        
-//    }
-//}
-
 class FiltersTableViewCell: UITableViewCell {
     var filter: Filter!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var switchOutlet: UISwitch!
+
+    @IBAction func switchAction(sender: AnyObject) {
+        filter.toggleSelected()
+        switchOutlet.selected = !switchOutlet.selected
+    }
+
+    func populate () {
+        titleLabel.text = filter.title
+        switchOutlet.selected = filter.selected
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,42 +34,6 @@ class FiltersTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 }
-
-//class DropdownTableViewCell: UITableViewCell {
-//    var filter: Filter!
-//
-//    @IBOutlet weak var titleLabel: UILabel!
-//
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-//}
-//
-//class CheckmarkTableViewCell: UITableViewCell {
-//    var filter: Filter!
-//
-//    @IBOutlet weak var titleLabel: UILabel!
-//
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-//}
-

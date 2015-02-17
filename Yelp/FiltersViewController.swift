@@ -26,12 +26,27 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     var mostPopular: FilterList
     var distance: FilterList
 
-
     required init(coder aDecoder: NSCoder) {
-        self.categories = FilterList(filters: filters.categories, selected: filters.selected.categories)
-        self.sortBy = FilterList(filters: filters.sortBy, selected: filters.selected.sortBy)
-        self.mostPopular = FilterList(filters: filters.mostPopular, selected: filters.selected.mostPopular)
-        self.distance = FilterList(filters: filters.distance, selected: filters.selected.distance)
+        self.categories = FilterList(
+            filters: filters.categories,
+            title: "Categories",
+            selected: filters.selected.categories
+        )
+        self.sortBy = FilterList(
+            filters: filters.sortBy,
+            title: "Sort By",
+            selected: filters.selected.sortBy
+        )
+        self.mostPopular = FilterList(
+            filters: filters.mostPopular,
+            title: "Most Popular",
+            selected: filters.selected.mostPopular
+        )
+        self.distance = FilterList(
+            filters: filters.distance,
+            title: "Distance",
+            selected: filters.selected.distance
+        )
 
         super.init(coder: aDecoder)
     }
@@ -40,6 +55,40 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let cancelButton = UIBarButtonItem(
+            barButtonSystemItem: UIBarButtonSystemItem.Cancel,
+            target: self,
+            action: "cancelFilters"
+        )
+        
+        let searchButton = UIBarButtonItem(
+            title: "Search",
+            style: UIBarButtonItemStyle.Bordered,
+            target: self,
+            action: "acceptFilters"
+        )
+        
+        cancelButton.setTitleTextAttributes(
+            [NSForegroundColorAttributeName: UIColor.whiteColor()],
+            forState: UIControlState.Normal
+        )
+        
+        searchButton.setTitleTextAttributes(
+            [NSForegroundColorAttributeName: UIColor.whiteColor()],
+            forState: UIControlState.Normal
+        )
+        
+        self.navigationItem.rightBarButtonItem = searchButton
+        self.navigationItem.leftBarButtonItem = cancelButton
+    }
+
+    func acceptFilters () {
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    func cancelFilters () {
+        navigationController?.popToRootViewControllerAnimated(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,10 +116,12 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier(
             "FiltersTableViewCell"
         ) as FiltersTableViewCell
+
+        cell.filter = getFilterListForIndex(
+            indexPath.section
+        ).filters[indexPath.row]
         
-        cell.filter = getFilterListForIndex(indexPath.section).filters[indexPath.row]
-        cell.titleLabel.text = cell.filter.title
-        
+        cell.populate()
         return cell
     }
 
@@ -81,6 +132,14 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         return getFilterListForIndex(section).filters.count
     }
 
+    func tableView(
+        tableView: UITableView,
+        titleForHeaderInSection section: Int
+    ) -> String? {
+        return getFilterListForIndex(
+            section
+        ).title
+    }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 4

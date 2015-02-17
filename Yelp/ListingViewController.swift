@@ -11,6 +11,9 @@ import SwiftyJSON
 
 class ListingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
+    @IBAction func onTap(sender: AnyObject) {
+        view.endEditing(true)
+    }
 
     var json: JSON!
     var businesses: JSON!
@@ -62,7 +65,6 @@ class ListingViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-//        return businesses.count
         if let businesses = self.businesses {
             return businesses.count
         } else {
@@ -83,6 +85,23 @@ class ListingViewController: UIViewController, UITableViewDataSource, UITableVie
 
         return cell
     }
+
+
+    func searchBar(
+        searchBar: UISearchBar,
+        textDidChange searchText: String
+    ) {
+        search(searchText)
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        view.endEditing(true)
+        
+        search(searchBar.text)
+    }
+    
+    
 
     func search (query: String) {
         YelpClient().searchWithTerm(

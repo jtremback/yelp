@@ -39,7 +39,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         success: (AFHTTPRequestOperation!, AnyObject!) -> Void,
         failure: (AFHTTPRequestOperation!, NSError!) -> Void
     ) -> AFHTTPRequestOperation! {
-        var parameters = ["term": term, "location": "San Francisco"]
+        var parameters = ["term": term, "location": "San Francisco", "category_filter": "restaurants"]
         return self.GET("search", parameters: parameters, success: success, failure: failure)
     }
     
